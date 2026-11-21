@@ -1,81 +1,125 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Quotes of Legends, a basketball archive of postgame interviews and press conferences from 1970–2026.">
-<title>Quotes of Legends — Basketball</title>
-<link rel="stylesheet" href="./style.css">
-<script type="module" src="./app.js"></script>
-<script type="module" src="./court.js"></script>
-</head>
-<body>
-<header class="top"><a class="name" href="#home">Quotes of Legends</a><nav aria-label="Main"><a id="about-link" href="#about" aria-haspopup="dialog">About</a><a href="#chronology">Chronology</a></nav></header>
-<main id="home">
-<section class="hero" id="cover" aria-label="Cover">
-<div class="cover"><div class="cover-lockup"><div class="court" aria-hidden="true"><div class="court-lines"><i class="arc"></i><i class="paint"></i><i class="circle"></i><i class="lane"></i></div><canvas class="court-trace"></canvas><b>Basketball</b></div></div></div>
-</section>
-<section class="archive" id="chronology">
-<h2 class="bar" aria-label="Chronology"><span aria-hidden="true">C</span><span aria-hidden="true">h</span><span aria-hidden="true">r</span><span aria-hidden="true">o</span><span aria-hidden="true">n</span><span aria-hidden="true">o</span><span aria-hidden="true">l</span><span aria-hidden="true">o</span><span aria-hidden="true">g</span><span aria-hidden="true">y</span></h2>
-<div class="controls">
-<div class="search">
-<label><span>Search</span><input id="search" type="search" placeholder="Quote or speaker" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="search-suggestions"></label>
-<ul id="search-suggestions" role="listbox" aria-label="Search suggestions" data-lenis-prevent hidden></ul>
-</div>
-<label><span>Year</span><select data-lenis-prevent id="year"><option value="">All years</option></select></label>
-<label><span>Order</span><select data-lenis-prevent id="order"><option value="asc">Oldest first</option><option value="desc">Newest first</option></select></label>
-</div>
-<div class="result-summary"><p id="count" role="status">Loading chronology…</p><button id="clear" type="button" hidden>Clear filters</button></div>
-<div class="chronology-views" role="group" aria-label="Chronology view">
-<button id="linear-view" type="button" aria-pressed="true">Timeline</button>
-<button id="ball-view" type="button" aria-pressed="false">Orbit</button>
-</div>
-<section id="basketball" class="basketball" aria-label="Orbit chronology" hidden>
-<div class="ball-stage">
-<canvas id="ball-canvas" aria-hidden="true"></canvas>
-<div class="orbit-controls">
-<button id="ball-spin" type="button" aria-pressed="false">Pause rotation</button>
-<label for="ball-year">Year</label>
-<select data-lenis-prevent id="ball-year"></select>
-</div>
-<div id="orbit-card" class="orbit-card" aria-labelledby="ball-heading" role="region" data-lenis-prevent hidden>
-<div class="orbit-card-header"><h3 id="ball-heading"></h3><button type="button" id="orbit-dismiss" aria-label="Close quote card">×</button></div>
-<div id="ball-quotes"></div>
-</div>
-</div>
-</section>
-<section id="timeline" class="timeline" aria-label="Interactive quotation timeline" hidden>
-<div class="timeline-preview">
-<div><p id="preview-date" class="label"></p><p id="preview-speaker"></p></div>
-<p id="preview-quote"></p>
-</div>
-<div class="timeline-plot">
-<div id="timeline-months" class="timeline-months" aria-hidden="true"></div>
-<div id="timeline-scroll" class="timeline-scroll" tabindex="0" role="region" aria-label="Timeline, scroll horizontally to browse years">
-<div id="timeline-years" class="timeline-years"></div>
-</div>
-</div>
-<div class="timeline-tools">
-<a href="#entries">Read the list</a>
-<label for="timeline-scrub">Scroll years</label>
-<input id="timeline-scrub" type="range" min="0" max="1000" value="0">
-</div>
-</section>
-<div id="entries"></div>
-</section>
 
-<article id="detail" hidden></article>
-</main>
-<footer><a href="#home">Quotes of Legends</a><span>Basketball / 1970—2026</span></footer>
-<dialog id="about" class="about-overlay" aria-labelledby="about-title" data-lenis-prevent>
-<div class="foreword">
-<form method="dialog" class="about-close"><button type="submit" autofocus>Close</button></form>
-<p id="about-title" class="foreword-label label">About</p>
-<p>Every basketball game ends twice. The first ending comes with the buzzer: the final score, the handshakes, the confetti or the quiet walk down the tunnel. The second comes minutes later, in a cramped room with a curtained backdrop and a cluster of microphones, where a player fresh off the court has to explain what just happened.</p>
-<p>That second ending is where this site lives. The quotes here span 1970 to 2026, from the era of notepad-and-pencil beat writers to a modern game where every sentence is clipped and shared within minutes. They were gathered from transcripts of interview clips and from basketball coverage, including news outlets and the NBA’s own channels.</p>
-<p>You’ll find humility and bravado, grace in defeat and, occasionally, a spectacular lack of it. You’ll find the familiar liturgy of “just trying to help the team win,” and the moments when someone tosses it aside and simply says what they mean.</p>
-<a class="button" href="#chronology">Browse the chronology</a>
-</div>
-</dialog>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description"
+        content="Quotes of Legends, a basketball archive of postgame interviews and press conferences from 1970–2026.">
+    <title>Quotes of Legends — Basketball</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="./app.js"></script>
+    <script type="module" src="./court.js"></script>
+</head>
+
+<body>
+    <header class="top"><a class="name" href="#home">Quotes of Legends</a>
+        <nav aria-label="Main"><a id="about-link" href="#about" aria-haspopup="dialog">About</a><a
+                href="#chronology">Chronology</a></nav>
+    </header>
+    <main id="home">
+        <section class="hero" id="cover" aria-label="Cover">
+            <div class="cover">
+                <div class="cover-lockup">
+                    <div class="court" aria-hidden="true">
+                        <div class="court-lines"><i class="arc"></i><i class="paint"></i><i class="circle"></i><i
+                                class="lane"></i></div><canvas class="court-trace"></canvas><b>Basketball</b>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="archive" id="chronology">
+            <h2 class="bar" aria-label="Chronology"><span aria-hidden="true">C</span><span
+                    aria-hidden="true">h</span><span aria-hidden="true">r</span><span aria-hidden="true">o</span><span
+                    aria-hidden="true">n</span><span aria-hidden="true">o</span><span aria-hidden="true">l</span><span
+                    aria-hidden="true">o</span><span aria-hidden="true">g</span><span aria-hidden="true">y</span></h2>
+            <div class="controls">
+                <div class="search">
+                    <label><span>Search</span><input id="search" type="search" placeholder="Quote or speaker"
+                            autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false"
+                            aria-controls="search-suggestions"></label>
+                    <ul id="search-suggestions" role="listbox" aria-label="Search suggestions" data-lenis-prevent
+                        hidden></ul>
+                </div>
+                <label><span>Year</span><select data-lenis-prevent id="year">
+                        <option value="">All years</option>
+                    </select></label>
+                <label><span>Order</span><select data-lenis-prevent id="order">
+                        <option value="asc">Oldest first</option>
+                        <option value="desc">Newest first</option>
+                    </select></label>
+            </div>
+            <div class="result-summary">
+                <p id="count" role="status">Loading chronology…</p><button id="clear" type="button" hidden>Clear
+                    filters</button>
+            </div>
+            <div class="chronology-views" role="group" aria-label="Chronology view">
+                <button id="linear-view" type="button" aria-pressed="true">Timeline</button>
+                <button id="ball-view" type="button" aria-pressed="false">Orbit</button>
+            </div>
+            <section id="basketball" class="basketball" aria-label="Orbit chronology" hidden>
+                <div class="ball-stage">
+                    <canvas id="ball-canvas" aria-hidden="true"></canvas>
+                    <div class="orbit-controls">
+                        <button id="ball-spin" type="button" aria-pressed="false">Pause rotation</button>
+                        <label for="ball-year">Year</label>
+                        <select data-lenis-prevent id="ball-year"></select>
+                    </div>
+                    <div id="orbit-card" class="orbit-card" aria-labelledby="ball-heading" role="region"
+                        data-lenis-prevent hidden>
+                        <div class="orbit-card-header">
+                            <h3 id="ball-heading"></h3><button type="button" id="orbit-dismiss"
+                                aria-label="Close quote card">×</button>
+                        </div>
+                        <div id="ball-quotes"></div>
+                    </div>
+                </div>
+            </section>
+            <section id="timeline" class="timeline" aria-label="Interactive quotation timeline" hidden>
+                <div class="timeline-preview">
+                    <div>
+                        <p id="preview-date" class="label"></p>
+                        <p id="preview-speaker"></p>
+                    </div>
+                    <p id="preview-quote"></p>
+                </div>
+                <div class="timeline-plot">
+                    <div id="timeline-months" class="timeline-months" aria-hidden="true"></div>
+                    <div id="timeline-scroll" class="timeline-scroll" tabindex="0" role="region"
+                        aria-label="Timeline, scroll horizontally to browse years">
+                        <div id="timeline-years" class="timeline-years"></div>
+                    </div>
+                </div>
+                <div class="timeline-tools">
+                    <a href="#entries">Read the list</a>
+                    <label for="timeline-scrub">Scroll years</label>
+                    <input id="timeline-scrub" type="range" min="0" max="1000" value="0">
+                </div>
+            </section>
+            <div id="entries"></div>
+        </section>
+
+        <article id="detail" hidden></article>
+    </main>
+    <footer><a href="#home">Quotes of Legends</a><span>Basketball / 1970—2026</span></footer>
+    <dialog id="about" class="about-overlay" aria-labelledby="about-title" data-lenis-prevent>
+        <div class="foreword">
+            <form method="dialog" class="about-close"><button type="submit" autofocus></button></form>
+            <p id="about-title" class="foreword-label label">About</p>
+            <p>Every basketball game ends twice. The first ending comes with the buzzer: the final score, the
+                handshakes, the confetti or the quiet walk down the tunnel. The second comes minutes later, in a cramped
+                room with a curtained backdrop and a cluster of microphones, where a player fresh off the court has to
+                explain what just happened.</p>
+            <p>That second ending is where this site lives. The quotes here span 1970 to 2026, from the era of
+                notepad-and-pencil beat writers to a modern game where every sentence is clipped and shared within
+                minutes. They were gathered from transcripts of interview clips and from basketball coverage, including
+                news outlets and the NBA’s own channels.</p>
+            <p>You’ll find humility and bravado, grace in defeat and, occasionally, a spectacular lack of it. You’ll
+                find the familiar liturgy of “just trying to help the team win,” and the moments when someone tosses it
+                aside and simply says what they mean.</p>
+            <a class="button" href="#chronology">Browse the chronology</a>
+        </div>
+    </dialog>
 </body>
+
 </html>
